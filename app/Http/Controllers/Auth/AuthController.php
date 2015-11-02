@@ -4,6 +4,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\Registrar;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Http\Request;
+use App\User;
 
 class AuthController extends Controller {
 
@@ -35,4 +37,19 @@ class AuthController extends Controller {
 		$this->middleware('guest', ['except' => 'getLogout']);
 	}
 
+
+	public function postRegister(Request $request) {    
+        // Creating a new user's account
+        if(is_null(User::where('email', '=', $request->get('email'))->first())) {
+	        $user = [
+	        	'name' => $request->get('name'),
+	        	'email' => $request->get('email'),
+	        	'password' => $request->get('password')
+	        ];
+	        $loginData = $this->registrar->create($user);
+	        $this->auth->login($loginData);
+	        return redirect('/');
+        }
+        return view('auth/register');
+    }
 }

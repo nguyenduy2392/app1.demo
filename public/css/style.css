@@ -1,0 +1,4 @@
+/*-------------------------------register----------------------------------------*/
+.register-page .form-horizontal .errorVal-input {
+	border-color: red;
+}
