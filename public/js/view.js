@@ -19,4 +19,7 @@ fullProject.controller('registerController', function ($scope) {
 	};
 });
 $('body').attr('ng-app');
+$(document).ready(function() {
+	loadUpload();
+});
 //# sourceMappingURL=view.js.map
