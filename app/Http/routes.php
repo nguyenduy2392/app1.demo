@@ -26,6 +26,7 @@ Route::get('/auth/register', ['uses' => 'Auth\AuthController@getLogin']);
 Route::post('/upload', ['uses' => 'ImagesController@upload']);
 /*--picture--*/
 Route::get('/make-new-picture', ['uses' => 'PicturesController@newUpload']);
+Route::get('/create', ['uses' => 'PicturesController@create']);
 
 /*--user--*/
 Route::get('/user/{id}', ['uses' => 'UsersController@allPictures']);

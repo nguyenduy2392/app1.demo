@@ -100,7 +100,8 @@ class ImagesController extends Controller {
 
 		return response()->json([
 			'status' => true,
-			'src' => $link
+			'src' => $link,
+			'imgName' => $file_name
 		]);
 	}
 }

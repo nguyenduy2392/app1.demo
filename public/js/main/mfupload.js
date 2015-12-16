@@ -15,6 +15,7 @@ function loadUpload() {
         token: $('meta[name="csrf-token"]').attr('content'),
         mfUpload: '[mf-upload="upload-picture"]'
     }
+    $('.mf_upload_m').remove();
     var target = $(base.mfUpload);
 
     if (target.length) {
@@ -37,15 +38,21 @@ function loadUpload() {
                     data.append("_token", base.token);
                 },
                 loaded: function (result, item) {
+                    var type = $(item).attr('data-type');
+                    var index = $(item).closest('.parent-item').attr('data-index');console.log(index);
                     if (result.status == true) {
 
                         var src = result.src;
 
-                        target = $('.img-background');
-                        // $('[data-box="manual"][data-type="json"]').val( '' );
+                        var bgr = $(item).closest('.parent-item[data-index="' + index + '"]');
 
-                        if (target !== null) {
-                            target.css('background-image', 'url(' + src + ')');
+                        if (bgr !== null) {
+                            bgr.find('.img-background').css('background-image', 'url(' + src + ')');
+                            bgr.find('.picture-upload').val(result.imgName);
+                            $(item).attr('data-type', 'old');
+                        }
+                        if(type == "create-new") {
+                            makeNewUpload(index);
                         }
 
 
