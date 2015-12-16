@@ -6229,5 +6229,29 @@ label,
 .checkbox label {
   font-weight: 300;
 }
+.mf-upload {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border: dotted red 1px;
+  text-align: center;
+}
+.mf-upload .img-thumb {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.mf-upload .img-thumb .img-background {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+.mf-upload .img-thumb img {
+  width: 100%;
+  display: none;
+}
 
 /*# sourceMappingURL=app.css.map */
